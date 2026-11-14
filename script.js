@@ -22,7 +22,7 @@ const QUIZ = [
     message: "Kda kda bab2a m7tagek tol el wa2t 7ata lw eh 💗"
   },
   {
-    question: "Which da we added back each other on snap ?",
+    question: "Which day we added back each other on snap ?",
     answers: ["5/3", "6/3", "7/3"],
     correct: "5/3",
     message: "There's still so much more of our story to write 💗💗"
@@ -60,7 +60,7 @@ function renderQuestion() {
     button.addEventListener("click", () => {
       [...answers.children].forEach(b => b.disabled = true);
       document.getElementById("feedback").textContent =
-        answer === q.correct ? q.message : "Not quite — but you still get all my love. ♡";
+        answer === q.correct ? q.message : "8ALATT!!! ETFDLY FAKARY TANYY!! ";
       document.getElementById("nextQuestion").style.display = "inline-block";
     });
     answers.appendChild(button);
@@ -70,9 +70,9 @@ document.getElementById("nextQuestion").addEventListener("click", () => {
   quizIndex++;
   if (quizIndex >= QUIZ.length) {
     document.getElementById("quizProgress").textContent = "QUIZ COMPLETE ♡";
-    document.getElementById("question").textContent = "You made it to the end!";
+    document.getElementById("question").textContent = "SHATOORAA LOLOO";
     document.getElementById("answers").innerHTML = "";
-    document.getElementById("feedback").textContent = "Your prize: a reminder that you are loved more than this little quiz can say. 💗";
+    document.getElementById("feedback").textContent = "Your prize: wala 7aga 3shan el mfrod tkony 3arfahom asln";
     document.getElementById("nextQuestion").style.display = "none";
   } else renderQuestion();
 });
