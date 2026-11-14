@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff1f4">
+  <title>A Little Place for You ♡</title>
+  <style>
+    :root{--rose:#d94f70;--deep:#8e2342;--pink:#fff1f4;--ink:#432b35;--muted:#8c6b76;--card:rgba(255,255,255,.82)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:linear-gradient(145deg,#fff7f8,#ffe5eb 55%,#fff7f4);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.23;background-image:radial-gradient(#d94f70 1px,transparent 1px);background-size:25px 25px;z-index:-1}
+    .wrap{width:min(1050px,92%);margin:auto}.hero{min-height:92vh;display:grid;place-items:center;text-align:center;padding:60px 18px;position:relative}
+    .eyebrow{letter-spacing:.22em;text-transform:uppercase;font:11px Arial,sans-serif;color:var(--rose)}
+    h1{font-size:clamp(3rem,9vw,6.8rem);font-weight:normal;line-height:.98;margin:20px 0;color:var(--deep)}
+    .hero p{max-width:550px;margin:0 auto 28px;font-size:1.15rem;line-height:1.8;color:#75505c}
+    .button{border:0;border-radius:999px;padding:14px 23px;background:var(--rose);color:white;font-size:14px;cursor:pointer;box-shadow:0 8px 22px #d94f7030;transition:.2s}
+    .button:hover{transform:translateY(-2px);background:var(--deep)}.button.secondary{background:white;color:var(--deep);border:1px solid #f0bdca;box-shadow:none}
+    .heart{font-size:22px;color:var(--rose);animation:pulse 1.8s infinite}@keyframes pulse{50%{transform:scale(1.2)}}
+    section{padding:65px 0}.section-title{text-align:center;font-size:clamp(2rem,5vw,3.2rem);font-weight:normal;color:var(--deep);margin:0 0 12px}.sub{text-align:center;color:var(--muted);margin:0 auto 32px;max-width:560px;line-height:1.7}
+    .card{background:var(--card);border:1px solid #fff;border-radius:24px;padding:clamp(20px,4vw,36px);box-shadow:0 12px 40px #8e23420c;backdrop-filter:blur(8px)}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.photo{min-height:220px;border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#fbd4de,#fff);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;color:#a24c66;position:relative}
+    .photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.photo span{z-index:1;font-size:14px;line-height:1.5}.photo.has-image span{display:none}
+    .letter-card{max-width:720px;margin:auto;text-align:center}.envelope{font-size:65px;margin:8px 0 18px}.letter{display:none;text-align:left;white-space:pre-line;font-size:1.12rem;line-height:1.95;color:#65434f}.letter.show{display:block}.letter-sign{color:var(--rose);font-style:italic}
+    .quiz{max-width:720px;margin:auto}.question{font-size:1.25rem;line-height:1.6;margin:8px 0 18px}.answers{display:grid;gap:10px}.answer{border:1px solid #f0c5d0;border-radius:14px;padding:13px 15px;text-align:left;background:#fff9fa;color:var(--ink);cursor:pointer;font:15px Arial,sans-serif}.answer:hover{background:#ffe5eb}.answer:disabled{cursor:default;opacity:.8}.feedback{min-height:28px;color:var(--deep);margin-top:16px;line-height:1.6}
+    .countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:26px 0}.timebox{min-width:85px;padding:17px 12px;border-radius:16px;background:white;border:1px solid #f6d1da;text-align:center}.timebox strong{display:block;font-size:2rem;font-weight:normal;color:var(--deep)}.timebox span{font:10px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+    .music-row{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}.small{font:12px Arial,sans-serif;color:var(--muted);line-height:1.6}.footer{text-align:center;padding:35px 10px 55px;color:var(--muted);font-size:14px}
+    .sparkle{position:absolute;opacity:.45;color:var(--rose);font-size:22px}.s1{top:17%;left:12%}.s2{right:12%;top:25%}.s3{bottom:17%;right:18%}
+
+    /* Lockdown Screen Styles */
+    #lockdown-screen{position:fixed;inset:0;background:linear-gradient(145deg,#fff7f8,#ffe5eb 55%,#fff7f4);color:var(--ink);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+    #lockdown-screen:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.23;background-image:radial-gradient(#d94f70 1px,transparent 1px);background-size:25px 25px;z-index:-1}
+    .lock-card{background:var(--card);border:1px solid #fff;border-radius:28px;padding:clamp(28px,5vw,48px);box-shadow:0 16px 48px #8e234214;backdrop-filter:blur(10px);max-width:540px;width:100%}
+    .lock-title{font-size:clamp(2rem,5vw,3rem);font-weight:normal;color:var(--deep);margin:12px 0}
+    .lock-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;margin:0 0 24px}
+
+    @media(max-width:650px){.gallery{grid-template-columns:1fr}.photo{min-height:260px}.hero{min-height:85vh}.timebox{min-width:68px}.timebox strong{font-size:1.6rem}}
+  </style>
+</head>
+<body>
+  <!-- Countdown Lockdown Overlay -->
+  <div id="lockdown-screen">
+    <div class="lock-card">
+      <div class="eyebrow">not yet ya batotyy ♡</div>
+      <h2 class="lock-title">Locked Until Your Day 🔒</h2>
+      <p class="lock-sub">Estany l7d m el wa2t ye5ls😝😝</p>
+      <div class="countdown" aria-live="polite">
+        <div class="timebox"><strong id="lock-days">—</strong><span>Days</span></div>
+        <div class="timebox"><strong id="lock-hours">—</strong><span>Hours</span></div>
+        <div class="timebox"><strong id="lock-minutes">—</strong><span>Minutes</span></div>
+        <div class="timebox"><strong id="lock-seconds">—</strong><span>Seconds</span></div>
+      </div>
+      <p class="small">December 25, 2026 • 12:00 AM (Egypt Time)</p>
+    </div>
+  </div>
+
+  <header class="hero">
+    <span class="sparkle s1">✧</span><span class="sparkle s2">♡</span><span class="sparkle s3">✦</span>
+    <div>
+      <div class="eyebrow">a tiny corner of the internet, just for you</div>
+      <h1>For <span id="herName">My Favorite Person</span><br><span class="heart">♡</span></h1>
+      <p> 3amaltelek 7aga 3shanek kda bas yarab yetmar feeky b3d kol da .</p>
+      <button class="button" onclick="document.querySelector('#memories').scrollIntoView()">اتفضلي دوسيني هنا ↓</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="memories">
+      <h2 class="section-title">BAHEBEKKKK YA MOSTAFEZZZAAA</h2>
+      <p class="sub">.</p>
+      <div class="gallery">
+        <div class="photo"><img src="photos/photo1.jpg" alt="Our first memory" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none';this.parentElement.classList.remove('has-image')"><span>♡<br>Add your first photo<br><small>photos/photo1.jpg</small></span></div>
+        <div class="photo"><img src="photos/photo2.jpg" alt="A favorite memory" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none';this.parentElement.classList.remove('has-image')"><span>♡<br>Add another memory<br><small>photos/photo2.jpg</small></span></div>
+        <div class="photo"><img src="photos/photo3.jpg" alt="Another memory" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none';this.parentElement.classList.remove('has-image')"><span>♡<br>One more favorite<br><small>photos/photo3.jpg</small></span></div>
+      </div>
+    </section>
+
+    <section id="letter-section">
+      <h2 class="section-title"> Letter fel 5afef mno </h2>
+      <p class="sub">BAHEBEKK AWWYYYY (msh 3arf el mara el kam dy)</p>
+      <div class="card letter-card">
+        <div class="envelope">💌</div>
+        <p id="letterTeaser">EFT7Y EL NOTE DY LEEKY ENTY BAS </p>
+        <button class="button" id="openLetter">دوسيني هنا تاني</button>
+        <div class="letter" id="letterText">Hey LOLO, my love,
+
+I made this little corner of the internet just for you, because I wanted you to have something you can open whenever you need a reminder of how special you are to me.
+
+Thank you for the laughs, the conversations, the random little moments, and all the memories that mean more to me than I can explain. You make ordinary days feel a little more beautiful just by being part of them.
+
+If I could give you one thing, it would be the chance to see yourself through my eyes for a moment — so you could understand how much happiness you bring into my life.
+
+This page is only a tiny gift, but every part of it was made with you in mind. Here's to more memories, more laughs, more songs, and more chapters in our story.
+
+I love you, LOLO. Always remember that you are loved. ♡
+
+<span class="letter-sign">— Yours, always</span></div>
+      </div>
+    </section>
+
+    <section id="quiz-section">
+      <h2 class="section-title">A tiny us-quiz</h2>
+      <p class="sub">Lw m3rftesh tgawby teb2y 3abeta (enty 3abeta kda kda)</p>
+      <div class="card quiz">
+        <div class="eyebrow" id="quizProgress">QUESTION 1 OF 3</div>
+        <div class="question" id="question">Which kind of day would I pick with you?</div>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <button class="button secondary" id="nextQuestion" style="display:none">Next question →</button>
+      </div>
+    </section>
+
+    <section id="countdown-section">
+      <h2 class="section-title">Counting down to (y)our day</h2>
+      <p class="sub" id="countdownLabel">One more date to look forward to, together.</p>
+      <div class="countdown" aria-live="polite">
+        <div class="timebox"><strong id="days">—</strong><span>Days</span></div>
+        <div class="timebox"><strong id="hours">—</strong><span>Hours</span></div>
+        <div class="timebox"><strong id="minutes">—</strong><span>Minutes</span></div>
+        <div class="timebox"><strong id="seconds">—</strong><span>Seconds</span></div>
+      </div>
+      <p class="small" style="text-align:center">(Y)our countdown is set for December 25, 2026.</p>
+    </section>
+
+    <section id="music-section">
+      <h2 class="section-title">7aga betfakarny beeky 3latol kol m basm3ha</h2>
+      <p class="sub">Kobayet el shai b laban bta3tek w b3den t3aly esm3y</p>
+      <div class="card music-row">
+        <span style="font-size:32px">♫</span>
+        <div><strong>Guess eh hya el song abl m tft7eha ;) </strong><div class="small"></div></div>
+        <audio id="song" controls preload="none"><source src="music/song.mp3" type="audio/mp3">Your browser does not support audio.</audio>
+      </div>
+      <p class="small" style="text-align:center;margin-top:12px"></p>
+    </section>
+  </main>
+  <footer class="footer">Made with lots of love, and a lot of you in mind ya batotyy (as always kda kda). ♡<br><span id="footerName">For my favorite person</span></footer>
+  
+  <script src="script.js"></script>
+  <script>
+    (function() {
+      // Unlocks at 12:00 AM (Midnight) Dec 25, 2026 — Egypt Time (UTC+2)
+      const unlockDate = new Date("2026-12-25T00:00:00+02:00").getTime();
+      const secretKey = "bishoy";
+
+      const lockScreen = document.getElementById("lockdown-screen");
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Instant bypass for you: add ?preview=bishoy to your URL
+      if (urlParams.get("preview") === secretKey) {
+        lockScreen.style.display = "none";
+        return;
+      }
+
+      document.body.style.overflow = "hidden";
+
+      function updateLockdown() {
+        const now = new Date().getTime();
+        const distance = unlockDate - now;
+
+        if (distance <= 0) {
+          lockScreen.style.display = "none";
+          document.body.style.overflow = "auto";
+          clearInterval(timerInterval);
+          return;
+        }
+
+        document.getElementById("lock-days").textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("lock-hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("lock-minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("lock-seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000);
+      }
+
+      updateLockdown();
+      const timerInterval = setInterval(updateLockdown, 1000);
+    })();
+  </script>
+</body>
+</html>
